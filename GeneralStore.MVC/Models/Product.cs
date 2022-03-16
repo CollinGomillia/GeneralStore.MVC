@@ -20,6 +20,6 @@ namespace GeneralStore.MVC.Models
         public decimal Price { get; set; }
         [Required]
         [Display(Name = "It is food")]
-        public Boolean IsFood { get; set; }
+        public bool IsFood { get; set; }
     }
 }

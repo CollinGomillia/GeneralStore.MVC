@@ -1,0 +1,18 @@
+﻿@model GeneralStore.MVC.Models.Transaction
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@if (ViewData["Error"] != null)
+{
+    <h3 class="text-center text-danger">@ViewData["Error"]</h3>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.DropDownListFor(model => model.ProductID, ViewData["Products"] as IEnumerable<SelectListItem>, null, new { @class = "form-control" })
+    @Html.DropDownListFor(model => model.CustomerID, ViewData["Customers"] as IEnumerable<SelectListItem>, null, new { @class = "form-control" })
+    <button type="submit">Create Transaction</button>
+}

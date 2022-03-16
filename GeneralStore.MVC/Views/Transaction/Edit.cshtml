@@ -1,0 +1,30 @@
+﻿@model GeneralStore.MVC.Models.Transaction
+@{
+    ViewBag.Title = "Edit";
+    // ViewData["Error"], error message
+    // ViewData["Customers"], collection of drop down items
+    // ViewData["Products"], collection of drop down items
+    // Model, Transaction from the DB
+}
+
+<h2>Edit</h2>
+
+@if (ViewData["Error"] != null)
+{
+    <h3 class="text-center text-danger">@ViewData["Error"]</h3>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <label for="ProductId">Product:</label>
+    @Html.DropDownListFor(model => model.ProductID, ViewData["Products"] as IEnumerable<SelectListItem>, null, new { @class = "form-control" })
+    <label for="CustomerId">Customer:</label>
+    @Html.DropDownListFor(model => model.CustomerID, ViewData["Customers"] as IEnumerable<SelectListItem>, null, new { @class = "form-control" })
+    @*<select class="form-control" name="CustomerId" required >
+              @foreach (var item in ViewData["Customers"] as IEnumerable<SelectListItem>)
+              {
+                  <option value="@item.Value" @(item.Value == Model.CustomerId.ToString() ? "selected" : null)>@item.Text</option>
+              }
+        </select>*@
+    <button type="submit">Edit Transaction</button>
+}

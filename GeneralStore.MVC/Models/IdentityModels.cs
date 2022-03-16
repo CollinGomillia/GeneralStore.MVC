@@ -24,14 +24,16 @@ namespace GeneralStore.MVC.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet <Transaction> Transactions { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public DbSet <Product> Products { get; set; }
-        public DbSet <Customer> Customers { get; set; }
+      
+
       
     }
 }

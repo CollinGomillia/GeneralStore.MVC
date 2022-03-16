@@ -1,0 +1,28 @@
+﻿@model IEnumerable<GeneralStore.MVC.Models.Transaction>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Customer</th>
+            <th>Date</th>
+            <th>Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td>@transaction.Product.Name</td>
+                <td>@transaction.Customer.FullName</td>
+                <td>@transaction.CreatedAt.ToShortDateString()</td>
+                <td><a href="/transaction/edit?id=@(transaction.TransactionID)">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
